@@ -14,7 +14,7 @@ const messageModel = mongoose.Schema(
       ref: "Chat",
     },
   },
-  { timestamps: true }
+  { timestamps: true, classValidationResolver: { validator: true, transformer: true } }
 );
 const Message = mongoose.model("Message", messageModel);
 module.exports = Message;

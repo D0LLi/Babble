@@ -88,7 +88,7 @@ const createGroupChat = asyncHandler(async (req, res) => {
   } catch (error) {
     res.status(400);
     throw new Error(error.message);
-  }
+}
 });
 
 const renameGroup = asyncHandler(async (req, res) => {
@@ -96,7 +96,7 @@ const renameGroup = asyncHandler(async (req, res) => {
   const updatedChat = await Chat.findByIdAndUpdate(
     chatId,
     { chatName },
-    { new: true }
+    { new: true, runValidators: true }
   )
     .populate("users", "-password")
     .populate("groupAdmin", "-password");
@@ -113,12 +113,12 @@ const addToGroup = asyncHandler(async (req, res) => {
   const added = await Chat.findByIdAndUpdate(
     chatId,
     { $push: { users: userId } },
-    { new: true }
+    { new: true, runValidators: true }
   )
     .populate("users", "-password")
     .populate("groupAdmin", "-password");
   if (!added) {
-    res.status(400);
+res.status(400);
     throw new Error("Chat Not Found");
   } else {
     res.json(added);
@@ -147,6 +147,7 @@ module.exports = {
   fetchChats,
   createGroupChat,
   renameGroup,
+};
   addToGroup,
-  removeFromGroup,
+// removeFromGroup,
 };

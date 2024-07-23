@@ -123,6 +123,12 @@ const Signup = () => {
         duration: 3000,
         isClosable: true,
         position: "bottom",
+        validator: (value) => {
+          return value.length > 0;
+        },
+        transformer: (value) => {
+          return value.toLowerCase();
+        },
       });
       setLoading(false);
     }
