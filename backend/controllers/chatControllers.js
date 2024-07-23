@@ -118,7 +118,7 @@ const addToGroup = asyncHandler(async (req, res) => {
     .populate("users", "-password")
     .populate("groupAdmin", "-password");
   if (!added) {
-    res.status(400);
+res.status(400);
     throw new Error("Chat Not Found");
   } else {
     res.json(added);
@@ -147,6 +147,7 @@ module.exports = {
   fetchChats,
   createGroupChat,
   renameGroup,
+};
   addToGroup,
-  removeFromGroup,
+// removeFromGroup,
 };
