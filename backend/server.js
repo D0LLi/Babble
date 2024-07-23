@@ -1,5 +1,5 @@
 const express = require("express");
-const dotenv = require("dotenv");
+const dotenv = require("dotenv").config();
 const connectDB = require("./config/db");
 const userRoutes = require("./routes/userRoutes");
 const chatRoutes = require("./routes/chatRoutes");
@@ -9,7 +9,7 @@ const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 const app = express();
 app.use(express.json());
 
-dotenv.config();
+// Please note that ajv and ajv-errors need to be installed separately, as they are not bundled with resolvers
 connectDB();
 
 app.get("/", (req, res) => {

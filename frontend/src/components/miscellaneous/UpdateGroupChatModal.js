@@ -121,6 +121,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
         duration: 5000,
         isClosable: true,
         position: "bottom",
+        raw: true,
       });
       setRenameLoading(false);
     }

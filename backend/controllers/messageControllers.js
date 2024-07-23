@@ -1,7 +1,7 @@
-const asyncHandler = require("express-async-handler");
-const Message = require("../models/messageModel");
-const User = require("../models/userModel");
-const Chat = require("../models/chatModels");
+import asyncHandler from "express-async-handler";
+import Message from "../models/messageModel";
+import User from "../models/userModel";
+import Chat from "../models/chatModels";
 
 const sendMessage = asyncHandler(async (req, res) => {
   const { content, chatId } = req.body;
@@ -27,6 +27,10 @@ const sendMessage = asyncHandler(async (req, res) => {
     });
     res.json(message);
   } catch (error) {
+    res.status(400);
+    throw new Error("Error Occured");
+  }
+});
     res.status(400);
     throw new Error(error.message);
   }
