@@ -27,6 +27,113 @@ const ProfileModals = ({ user, children }) => {
       <Modal size="lg" isOpen={isOpen} onClose={onClose} isCentered>
         <ModalOverlay />
         <ModalContent height="410px">
+          <ModalHeader>Profile</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Image
+              borderRadius="full"
+              boxSize="150px"
+              src={user?.avatar}
+              alt={user?.name}
+            />
+            <Text fontSize="xl" fontWeight="bold" mt="4">
+              {user?.name}
+            </Text>
+            <Text color="gray.500">{user?.email}</Text>
+          </ModalBody>
+
+input:
+**useDisclosure:** `onClose` callback now receives the event object
+
+code:
+import { ViewIcon } from "@chakra-ui/icons";
+import {
+  Button,
+  IconButton,
+  Image,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  Text,
+  useDisclosure,
+} from "@chakra-ui/react";
+import React from "react";
+
+const ProfileModals = ({ user, children }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  return (
+    <>
+      {children ? (
+        <span onClick={onOpen}>{children}</span>
+      ) : (
+        <IconButton d={{ base: "flex" }} icon={<ViewIcon />} onClick={onOpen} />
+      )}
+      <Modal size="lg" isOpen={isOpen} onClose={onClose} isCentered>
+        <ModalOverlay />
+        <ModalContent height="410px">
+          <ModalHeader>Profile</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Image
+              borderRadius="full"
+              boxSize="150px"
+              src={user?.avatar}
+              alt={user?.name}
+            />
+            <Text fontSize="xl" fontWeight="bold" mt="4">
+              {user?.name}
+            </Text>
+            <Text color="gray.500">{user?.email}</Text>
+          </ModalBody>
+
+output:
+import { ViewIcon } from "@chakra-ui/icons";
+import {
+  Button,
+  IconButton,
+  Image,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  Text,
+  useDisclosure,
+} from "@chakra-ui/react";
+import React from "react";
+
+const ProfileModals = ({ user, children }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  return (
+    <>
+      {children ? (
+        <span onClick={onOpen}>{children}</span>
+      ) : (
+        <IconButton d={{ base: "flex" }} icon={<ViewIcon />} onClick={onOpen} />
+      )}
+      <Modal size="lg" isOpen={isOpen} onClose={(e) => onClose(e)} isCentered>
+        <ModalOverlay />
+        <ModalContent height="410px">
+          <ModalHeader>Profile</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Image
+              borderRadius="full"
+              boxSize="150px"
+              src={user?.avatar}
+              alt={user?.name}
+            />
+            <Text fontSize="xl" fontWeight="bold" mt="4">
+              {user?.name}
+            </Text>
+            <Text color="gray.500">{user?.email}</Text>
+          </ModalBody>
           <ModalHeader
             fontSize="40px"
             fontFamily="monospace"
