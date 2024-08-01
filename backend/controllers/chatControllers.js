@@ -3,6 +3,8 @@ const Chat = require("../models/chatModels");
 const User = require("../models/userModel");
 
 const accessChat = asyncHandler(async (req, res) => {
+  // Retrieves and creates chats for users.
+
   const { userId } = req.body;
   if (!userId) {
     console.log("UserId Param Not Sent With Request !");
@@ -44,6 +46,8 @@ const accessChat = asyncHandler(async (req, res) => {
 });
 
 const fetchChats = asyncHandler(async (req, res) => {
+  // Retrieves chats for a user.
+
   try {
     Chat.find({ users: { $elemMatch: { $eq: req.user._id } } })
       .populate("users", "-password")
@@ -51,6 +55,8 @@ const fetchChats = asyncHandler(async (req, res) => {
       .populate("latestMessage")
       .sort({ updatedAt: -1 })
       .then(async (results) => {
+        // Populates sender details in chat messages.
+
         results = await User.populate(results, {
           path: "latestMessage.sender",
           select: "name pic email",
@@ -64,6 +70,8 @@ const fetchChats = asyncHandler(async (req, res) => {
 });
 
 const createGroupChat = asyncHandler(async (req, res) => {
+  // Creates a group chat.
+
   if (!req.body.users || !req.body.name) {
     return res.status(400).send({ message: "Please Fill All The Details ! " });
   }
@@ -92,6 +100,8 @@ const createGroupChat = asyncHandler(async (req, res) => {
 });
 
 const renameGroup = asyncHandler(async (req, res) => {
+  // Updates and retrieves a chat group.
+
   const { chatId, chatName } = req.body;
   const updatedChat = await Chat.findByIdAndUpdate(
     chatId,
@@ -109,6 +119,8 @@ const renameGroup = asyncHandler(async (req, res) => {
 });
 
 const addToGroup = asyncHandler(async (req, res) => {
+  // Adds user to group in chat.
+
   const { chatId, userId } = req.body;
   const added = await Chat.findByIdAndUpdate(
     chatId,
@@ -126,6 +138,8 @@ res.status(400);
 });
 
 const removeFromGroup = asyncHandler(async (req, res) => {
+  // Removes a user from a chat group.
+
   const { chatId, userId } = req.body;
   const removed = await Chat.findByIdAndUpdate(
     chatId,

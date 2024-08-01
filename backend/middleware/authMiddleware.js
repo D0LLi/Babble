@@ -3,6 +3,8 @@ import User from "../models/userModel";
 import asyncHandlers from "express-async-handler";
 
 const protect = asyncHandlers(async (req, res, next) => {
+  // Authenticates API requests.
+
   let token;
   if (
     req.headers.authorization &&

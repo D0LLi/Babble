@@ -1,0 +1,28 @@
+{
+  "meta": {
+    "version": "1",
+    "updated_at": "2024-08-01T08:07:17.558Z",
+    "created_at": "2024-08-01T08:07:28.154Z",
+    "pipelines": [
+      "562f819a-1b4c-4c2a-a56f-d6d9fdc40d70"
+    ]
+  },
+  "lookup": [
+    [
+      "backend/config/db.js",
+      "backend/controllers/chatControllers.js",
+      "backend/controllers/messageControllers.js",
+      "backend/controllers/userControllers.js",
+      "backend/middleware/authMiddleware.js",
+      "backend/middleware/errorMiddleware.js",
+      "backend/models/messageModel.js",
+      "backend/models/userModel.js",
+      "backend/routes/userRoutes.js",
+      "backend/server.js",
+      "frontend/src/components/Authentication/Signup.js",
+      "frontend/src/components/miscellaneous/GroupChatModal.js",
+      "frontend/src/components/miscellaneous/ProfileModals.js",
+      "frontend/src/components/miscellaneous/UpdateGroupChatModal.js"
+    ]
+  ]
+}
