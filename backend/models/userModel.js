@@ -18,6 +18,8 @@ userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 userSchema.pre("save", async function (next) {
+  // Hashes password before saving user data.
+
   if (!this.isModified) {
     next();
   }
