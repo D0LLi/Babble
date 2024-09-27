@@ -28,6 +28,68 @@ const GroupChatModal = ({ children }) => {
   const toast = useToast();
   const { user, chats, setChats } = useChatState();
 
+  return (
+    <>
+      <span onClick={onOpen}>{children}</span>
+
+      <Modal size="lg" isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Create Group Chat</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <FormControl>
+              <Input
+                placeholder="Chat Name"
+                mb={3}
+                onChange={(e) => setGroupName(e.target.value)}
+              />
+            </FormControl>
+            <FormControl>
+              <Input
+                placeholder="Add Users eg: John, Piyush, Jane"
+                mb={1}
+                onChange={(e) => handleSearch(e.target.value)}
+              />
+            </FormControl>
+            <Box w="100%" display="flex" flexWrap="wrap">
+              {selectedUsers.map((u) => (
+                <UserBadgeItem
+                  key={u._id}
+                  user={u}
+                  handleFunction={() => handleRemove(u)}
+                />
+              ))}
+            </Box>
+            {loading ? (
+              // <ChatLoading />
+              <div>Loading...</div>
+            ) : (
+              searchResult
+                ?.slice(0, 4)
+                .map((user) => (
+                  <UserListItem
+                    key={user._id}
+                    user={user}
+                    handleFunction={() => handleAdd(user)}
+                  />
+                ))
+            )}
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme="blue" mr={3} onClick={handleCreateGroup}>
+              Create Chat
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </>
+  );
+};
+
+export default GroupChatModal;
+
   const handleSearch = async (query) => {
     if (!query) {
       setSearchResult([]);
@@ -56,7 +118,7 @@ const GroupChatModal = ({ children }) => {
   };
   const handleSubmit = async () => {
     if (!groupName || !selectedUsers) {
-      toast({
+     toast({
         title: "Please Fill All The Details !",
         status: "warning",
         duration: 5000,
@@ -68,6 +130,20 @@ const GroupChatModal = ({ children }) => {
       const config = {
         headers: {
           Authorization: `Bearer ${user.token}`,
+        },
+        validator: (value) => {
+          if (value.name === "") {
+            throw new Error("Group name is required");
+          }
+          if (value.users.length === 0) {
+            throw new Error("Please select at least one user");
+          }
+        },
+        transformer: (value) => {
+          return {
+            ...value,
+            users: value.users.map((u) => u._id),
+          };
         },
       };
       const { data } = await axios.post(
