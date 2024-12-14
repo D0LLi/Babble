@@ -22,6 +22,27 @@ import UserBadgeItem from "../UserAvatar/UserBadgeItem";
 import axios from "axios";
 import UserListItem from "../UserAvatar/UserListItem";
 
+/**
+ * @description Manages a modal window for updating a group chat in a messaging
+ * application. It allows users to remove members, add new members, rename the chat,
+ * and search for users to add. It also displays the current chat name, member list,
+ * and provides options to leave the group.
+ * 
+ * @param {object} obj - 3 in number, where 'fetchAgain' is probably used to update
+ * the UI after fetching data from server, 'setFetchAgain' is likely an updating state
+ * for 'fetchAgain', 'fetchMessages' seems to fetch new messages.
+ * 
+ * @param {boolean} obj.fetchAgain - Used to trigger a re-fetching of data.
+ * 
+ * @param {boolean} obj.setFetchAgain - Used to trigger the fetching of data again
+ * after certain actions are performed.
+ * 
+ * @param {() => void} obj.fetchMessages - Used to fetch chat messages when the group
+ * is updated.
+ * 
+ * @returns {JSX.Element} A React component representing a modal window with various
+ * functionalities to manage a group chat.
+ */
 const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [groupChatName, setGroupChatName] = useState();
@@ -32,6 +53,13 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
   const toast = useToast();
   const { selectedChat, setSelectedChat, user } = useChatState();
 
+  /**
+   * @description Removes a user from a chat group when called with a user object as
+   * an argument. It checks if the caller is the admin or the user themselves, and then
+   * makes a PUT request to the server to remove the user from the chat group.
+   * 
+   * @param {object} user1 - Used to represent a user object.
+   */
   const handleRemove = async (user1) => {
     if (selectedChat.groupAdmin._id !== user._id && user1.id !== user._id) {
       toast({
@@ -74,6 +102,13 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
       setRenameLoading(false);
     }
   };
+  /**
+   * @description Adds a new user to a chat group. It checks if the user already exists
+   * and if the calling user is an admin. If not, it displays an error message. Otherwise,
+   * it makes a PUT request to add the user to the group and updates the chat state.
+   * 
+   * @param {object} user1 - Used to represent a new user to be added to the chat group.
+   */
   const handleAddUser = async (user1) => {
     if (selectedChat.users.find((u) => u._id === user1._id)) {
       toast({
@@ -126,6 +161,11 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
       setRenameLoading(false);
     }
   };
+  /**
+   * @description Asynchronously renews a group chat's name by sending a PUT request
+   * to the "/api/chat/rename" endpoint with the new name and ID, then updates the state
+   * accordingly.
+   */
   const handleRename = async () => {
     if (!groupChatName) return;
     try {
@@ -159,6 +199,13 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
     }
     setGroupChatName("");
   };
+  /**
+   * @description Searches for a query and returns a list of results from an API,
+   * handling loading state and error cases. If no query is provided, it resets the
+   * search result to an empty array.
+   * 
+   * @param {string} query - Used to search for data.
+   */
   const handleSearch = async (query) => {
     if (!query) {
       setSearchResult([]);

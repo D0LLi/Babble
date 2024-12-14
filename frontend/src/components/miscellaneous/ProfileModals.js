@@ -15,6 +15,20 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 
+/**
+ * @description Displays a modal window containing user profile information when
+ * triggered by a child component or an icon button. The modal shows the user's name,
+ * email, and avatar image with a close button for dismissal.
+ * 
+ * @param {object} obj - Required. The first property "user" represents user data,
+ * and the second property "children" allows for rendering children components or
+ * text within the modal.
+ * 
+ * @param {object} obj.user - Used to retrieve user data.
+ * 
+ * @param {string | JSX.Element} obj.children - Optional, used to render a custom
+ * header or content.
+ */
 const ProfileModals = ({ user, children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
