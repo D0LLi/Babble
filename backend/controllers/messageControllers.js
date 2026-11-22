@@ -28,6 +28,10 @@ const sendMessage = asyncHandler(async (req, res) => {
     res.json(message);
   } catch (error) {
     res.status(400);
+    throw new Error("Error Occured");
+  }
+});
+    res.status(400);
     throw new Error(error.message);
   }
 });
