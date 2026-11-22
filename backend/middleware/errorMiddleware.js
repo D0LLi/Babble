@@ -1,3 +1,4 @@
+// Please note that ajv and ajv-errors need to be installed separately, as they are not bundled with resolvers
 const notFound = (req, res, next) => {
   const error = new Error(`Not Found - ${req.originalUrl}`);
   res.status(404);

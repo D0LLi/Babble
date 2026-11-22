@@ -12,7 +12,7 @@ const userSchema = mongoose.Schema(
       default: "https://freesvg.org/img/abstract-user-flat-4.png",
     },
   },
-  { timestamps: true }
+  { timestamps: true, classValidationResolver: { validator: true, transformer: true } }
 );
 userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
