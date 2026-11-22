@@ -9,16 +9,16 @@ const sendMessage = asyncHandler(async (req, res) => {
     console.log("Invalid Data Passed into Request");
     res.sendStatus(400);
   }
-  var newMessage = {
+  const newMessage = {
     sender: req.user._id,
     content: content,
     chat: chatId,
   };
   try {
-    var message = await Message.create(newMessage);
-    message = await message.populate("sender", "name pic");
-    message = await message.populate("chat");
-    message = await User.populate(message, {
+    const message = await Message.create(newMessage);
+    await message.populate("sender", "name pic");
+    await message.populate("chat");
+    await User.populate(message, {
       path: "chat.users",
       select: "name pic email",
     });
