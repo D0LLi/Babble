@@ -1,0 +1,1263 @@
+[
+  {
+    "name": "db.js",
+    "path": "backend/config/db.js",
+    "content": {
+      "structured": {
+        "description": "And exports an asynchronous function named connectDB that establishes a connection to a MongoDB database using the mongoose library. The function connects to the specified MongoDB URI and logs a success message if the connection is established successfully. If any error occurs during the connection process, it logs the error message and exits the program.",
+        "items": [
+          {
+            "id": "8551f7da-bd24-8986-b541-cdf1df115048",
+            "ancestors": [],
+            "description": "Establishes a connection to a MongoDB database using the Mongoose library. It takes the URI from an environment variable, sets some options, and logs a success message if successful or an error message if not. If an error occurs, it exits the process.",
+            "params": [],
+            "usage": {
+              "language": "javascript",
+              "code": "connectDB();\n",
+              "description": ""
+            },
+            "name": "connectDB",
+            "location": {
+              "start": 3,
+              "insert": 3,
+              "offset": " ",
+              "indent": 0,
+              "comment": null
+            },
+            "item_type": "function",
+            "length": 12,
+            "docLength": null
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "chatControllers.js",
+    "path": "backend/controllers/chatControllers.js",
+    "content": {
+      "structured": {
+        "description": "Several APIs for managing chat functionality in a web application. It utilizes express.js and mongoose as its primary dependencies. The APIs handle tasks such as accessing individual chats, fetching multiple chats, creating group chats, renaming group chats, adding users to groups, and removing users from groups.",
+        "items": [
+          {
+            "id": "237a1a10-fe5c-b7ac-6a4e-1b4333cc245a",
+            "ancestors": [],
+            "description": "Retrieves and creates chats for users.",
+            "name": null,
+            "location": {
+              "start": 5,
+              "insert": 6,
+              "offset": " ",
+              "indent": 2,
+              "comment": null
+            },
+            "item_type": "higher_order_invocation",
+            "length": 40,
+            "docLength": null
+          },
+          {
+            "id": "e7c15103-19ae-2896-7040-a95b3b927c77",
+            "ancestors": [],
+            "description": "Retrieves chats for a user.",
+            "name": null,
+            "location": {
+              "start": 46,
+              "insert": 47,
+              "offset": " ",
+              "indent": 2,
+              "comment": null
+            },
+            "item_type": "higher_order_invocation",
+            "length": 19,
+            "docLength": null
+          },
+          {
+            "id": "778a39f5-958b-4a91-1149-bd6211d1379f",
+            "ancestors": [
+              "e7c15103-19ae-2896-7040-a95b3b927c77"
+            ],
+            "description": "Populates sender details in chat messages.",
+            "name": null,
+            "location": {
+              "start": 48,
+              "insert": 54,
+              "offset": " ",
+              "indent": 8,
+              "comment": null
+            },
+            "item_type": "higher_order_invocation",
+            "length": 12,
+            "docLength": null
+          },
+          {
+            "id": "119e63ae-1ee1-d5aa-8443-a0fbdd484624",
+            "ancestors": [],
+            "description": "Creates a group chat.",
+            "name": null,
+            "location": {
+              "start": 66,
+              "insert": 67,
+              "offset": " ",
+              "indent": 2,
+              "comment": null
+            },
+            "item_type": "higher_order_invocation",
+            "length": 27,
+            "docLength": null
+          },
+          {
+            "id": "5a130ccd-3758-64b5-764e-afb02aa1e463",
+            "ancestors": [],
+            "description": "Updates and retrieves a chat group.",
+            "name": null,
+            "location": {
+              "start": 94,
+              "insert": 95,
+              "offset": " ",
+              "indent": 2,
+              "comment": null
+            },
+            "item_type": "higher_order_invocation",
+            "length": 16,
+            "docLength": null
+          },
+          {
+            "id": "8ebd8334-7474-6795-7c4e-1c2465bb6a49",
+            "ancestors": [],
+            "description": "Adds user to group in chat.",
+            "name": null,
+            "location": {
+              "start": 111,
+              "insert": 112,
+              "offset": " ",
+              "indent": 2,
+              "comment": null
+            },
+            "item_type": "higher_order_invocation",
+            "length": 16,
+            "docLength": null
+          },
+          {
+            "id": "0fa8e04b-9c53-caa9-3144-b809dfe8c540",
+            "ancestors": [],
+            "description": "Removes a user from a chat group.",
+            "name": null,
+            "location": {
+              "start": 128,
+              "insert": 129,
+              "offset": " ",
+              "indent": 2,
+              "comment": null
+            },
+            "item_type": "higher_order_invocation",
+            "length": 16,
+            "docLength": null
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "messageControllers.js",
+    "path": "backend/controllers/messageControllers.js",
+    "content": {
+      "structured": {
+        "description": "Two routes: sendMessage and allMessages. The sendMessage route is responsible for creating a new message in the database and populating it with sender details, chat details, and user details. It then updates the chat record to reference the newly created message as the latest one. The allMessages route retrieves all messages from a specific chat and populates them with sender details and chat details.",
+        "items": [
+          {
+            "id": "a91a0701-3dd9-9eb5-3b46-763d7ee7def7",
+            "ancestors": [],
+            "description": "Sends a message.",
+            "name": null,
+            "location": {
+              "start": 6,
+              "insert": 7,
+              "offset": " ",
+              "indent": 2,
+              "comment": null
+            },
+            "item_type": "higher_order_invocation",
+            "length": 28,
+            "docLength": null
+          },
+          {
+            "id": "de84d4bb-622e-b9ad-7a4f-4e70cc8195d3",
+            "ancestors": [],
+            "description": "Retrieves messages from a database and sends them back to a client as JSON.",
+            "name": null,
+            "location": {
+              "start": 35,
+              "insert": 36,
+              "offset": " ",
+              "indent": 2,
+              "comment": null
+            },
+            "item_type": "higher_order_invocation",
+            "length": 11,
+            "docLength": null
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "userControllers.js",
+    "path": "backend/controllers/userControllers.js",
+    "content": {
+      "structured": {
+        "description": "Three asynchronous handlers using Express.js: registerUser, authUser, and allUser. RegisterUser creates a new user with provided name, email, password, and profile picture, generates a token upon successful registration, and returns the user details along with the token. AuthUser authenticates an existing user by matching the provided email and password, generates a token if authentication is successful, and returns the user details along with the token.",
+        "items": [
+          {
+            "id": "988c9f32-e437-f6a4-fd4c-bc9692efaf44",
+            "ancestors": [],
+            "description": "Registers users.",
+            "name": null,
+            "location": {
+              "start": 5,
+              "insert": 6,
+              "offset": " ",
+              "indent": 2,
+              "comment": null
+            },
+            "item_type": "higher_order_invocation",
+            "length": 27,
+            "docLength": null
+          },
+          {
+            "id": "987a470b-c34b-699c-6e48-6cbea7317a8c",
+            "ancestors": [],
+            "description": "Authenticates a user.",
+            "name": null,
+            "location": {
+              "start": 38,
+              "insert": 39,
+              "offset": " ",
+              "indent": 2,
+              "comment": null
+            },
+            "item_type": "higher_order_invocation",
+            "length": 17,
+            "docLength": null
+          },
+          {
+            "id": "1ed5604f-fcbc-5fa3-0f46-a4737531e512",
+            "ancestors": [],
+            "description": "Retrieves all users excluding the logged-in user, based on search query.",
+            "name": null,
+            "location": {
+              "start": 56,
+              "insert": 57,
+              "offset": " ",
+              "indent": 2,
+              "comment": null
+            },
+            "item_type": "higher_order_invocation",
+            "length": 13,
+            "docLength": null
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "authMiddleware.js",
+    "path": "backend/middleware/authMiddleware.js",
+    "content": {
+      "structured": {
+        "description": "An Express.js middleware function called `protect` that authenticates and authorizes requests using JSON Web Tokens (JWT). It verifies the token in the Authorization header, decodes it using a secret key, and retrieves the user data from a MongoDB database using Mongoose. If the token is invalid or missing, it returns a 401 Unauthorized error.",
+        "items": [
+          {
+            "id": "55a3c72f-e90d-7083-6a4e-12d64996dcad",
+            "ancestors": [],
+            "description": "Authenticates API requests.",
+            "name": null,
+            "location": {
+              "start": 5,
+              "insert": 6,
+              "offset": " ",
+              "indent": 2,
+              "comment": null
+            },
+            "item_type": "higher_order_invocation",
+            "length": 23,
+            "docLength": null
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "errorMiddleware.js",
+    "path": "backend/middleware/errorMiddleware.js",
+    "content": {
+      "structured": {
+        "description": "Two error-handling middleware functions: `notFound` and `errorHandler`. The `notFound` function returns a 404 status code when a requested URL is not found. The `errorHandler` function catches any errors that occur during request processing, sets the HTTP status code accordingly, and returns an error response containing an error message and stack trace (in development mode).",
+        "items": [
+          {
+            "id": "af08d351-f1c9-afb0-8348-8e4bc49b1623",
+            "ancestors": [],
+            "description": "Generates an error object with a message indicating that a requested URL was not found, sets the HTTP status to 404, and passes the error object to the next middleware function in the request chain.",
+            "params": [
+              {
+                "name": "req",
+                "default_value": null,
+                "optional": false,
+                "type_name": "Request",
+                "description": "Used to represent the HTTP request."
+              },
+              {
+                "name": "res",
+                "default_value": null,
+                "optional": false,
+                "type_name": "http.Response",
+                "description": "Used to send HTTP responses."
+              },
+              {
+                "name": "next",
+                "default_value": null,
+                "optional": false,
+                "type_name": "Error | undefined",
+                "description": "Passed to the next middleware or error handler in the stack."
+              }
+            ],
+            "usage": {
+              "language": "javascript",
+              "code": "notFound(req, res, next);\nres.send('This page does not exist');\n",
+              "description": ""
+            },
+            "name": "notFound",
+            "location": {
+              "start": 2,
+              "insert": 2,
+              "offset": " ",
+              "indent": 0,
+              "comment": null
+            },
+            "item_type": "function",
+            "length": 5,
+            "docLength": null
+          },
+          {
+            "id": "a4f2f964-754b-5392-954a-4395eee33c4e",
+            "ancestors": [],
+            "description": "Catches and handles errors by setting a custom HTTP status code and returning a JSON response with an error message and optional stack trace, depending on the production environment.",
+            "params": [
+              {
+                "name": "err",
+                "default_value": null,
+                "optional": false,
+                "type_name": "Error",
+                "description": "Used to capture any error that might occur during application execution."
+              },
+              {
+                "name": "req",
+                "default_value": null,
+                "optional": false,
+                "type_name": "http.IncomingMessage",
+                "description": "Used to represent the HTTP request received by the server."
+              },
+              {
+                "name": "res",
+                "default_value": null,
+                "optional": false,
+                "type_name": "Response",
+                "description": "Used to handle HTTP responses."
+              },
+              {
+                "name": "next",
+                "default_value": null,
+                "optional": false,
+                "type_name": "Function",
+                "description": "Ignored in this implementation."
+              }
+            ],
+            "usage": {
+              "language": "javascript",
+              "code": "errorHandler(new Error(\"Something went wrong\"), req, res, next);\n",
+              "description": ""
+            },
+            "name": "errorHandler",
+            "location": {
+              "start": 8,
+              "insert": 8,
+              "offset": " ",
+              "indent": 0,
+              "comment": null
+            },
+            "item_type": "function",
+            "length": 8,
+            "docLength": null
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "messageModel.js",
+    "path": "backend/models/messageModel.js",
+    "content": {
+      "structured": {
+        "description": "A Mongoose schema and model for representing messages in a MongoDB database using Mongoose package. The schema consists of fields for sender (reference to User model), content, and chat (reference to Chat model). Timestamps are enabled for this model, allowing for automatic creation of timestamps for inserted documents.",
+        "items": []
+      }
+    }
+  },
+  {
+    "name": "userModel.js",
+    "path": "backend/models/userModel.js",
+    "content": {
+      "structured": {
+        "description": "A Mongoose schema for users, requiring name, email, and password fields with unique validation on email and hashing of passwords using bcrypt. The matchPassword method is used to compare entered passwords with stored hashes. A pre-save middleware function is defined to hash new user passwords upon saving.",
+        "items": [
+          {
+            "id": "4b1aee0b-fe71-9893-0c48-8c61babfce9e",
+            "ancestors": [],
+            "description": "Hashes password before saving user data.",
+            "name": null,
+            "location": {
+              "start": 20,
+              "insert": 21,
+              "offset": " ",
+              "indent": 2,
+              "comment": null
+            },
+            "item_type": "higher_order_invocation",
+            "length": 7,
+            "docLength": null
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "userRoutes.js",
+    "path": "backend/routes/userRoutes.js",
+    "content": {
+      "structured": {
+        "description": "An express.js router that handles user-related routes using the provided controllers and middleware. The registerUser controller handles POST requests for registering new users, while authUser authenticates user login attempts. AllUser retrieves all registered users after authentication.",
+        "items": []
+      }
+    }
+  },
+  {
+    "name": "server.js",
+    "path": "backend/server.js",
+    "content": {
+      "structured": {
+        "description": "a RESTful API using Express.js and handles real-time communication using Socket.IO. It connects to a MongoDB database using Mongoose, sets up routes for user, chat, and message endpoints, and uses error handling middleware. The code establishes WebSocket connections between clients and servers, allowing for bi-directional communication and enabling features such as live typing indicators and instant messaging.",
+        "items": [
+          {
+            "id": "0949e2dc-0e8d-7f9c-7348-b1fe3004b99e",
+            "ancestors": [],
+            "description": "Handles HTTP GET requests at root path and sends a response.",
+            "name": null,
+            "location": {
+              "start": 15,
+              "insert": 16,
+              "offset": " ",
+              "indent": 2,
+              "comment": null
+            },
+            "item_type": "higher_order_invocation",
+            "length": 3,
+            "docLength": null
+          },
+          {
+            "id": "9990c74f-e42e-bc93-6c44-ef50c182a70c",
+            "ancestors": [],
+            "description": "Handles Socket.io connections.",
+            "name": null,
+            "location": {
+              "start": 34,
+              "insert": 35,
+              "offset": " ",
+              "indent": 2,
+              "comment": null
+            },
+            "item_type": "higher_order_invocation",
+            "length": 30,
+            "docLength": null
+          },
+          {
+            "id": "236e45ae-59be-c081-c145-985310be0184",
+            "ancestors": [
+              "9990c74f-e42e-bc93-6c44-ef50c182a70c"
+            ],
+            "description": "Handles incoming \"setup\" messages from clients and joins users to rooms based on their IDs, then sends \"connected\" events to clients.",
+            "name": null,
+            "location": {
+              "start": 37,
+              "insert": 38,
+              "offset": " ",
+              "indent": 4,
+              "comment": null
+            },
+            "item_type": "higher_order_invocation",
+            "length": 4,
+            "docLength": null
+          },
+          {
+            "id": "a6605390-b69a-34ae-2048-594b19963a50",
+            "ancestors": [
+              "9990c74f-e42e-bc93-6c44-ef50c182a70c"
+            ],
+            "description": "Handles the \"join chat\" event on a WebSocket connection.",
+            "name": null,
+            "location": {
+              "start": 42,
+              "insert": 43,
+              "offset": " ",
+              "indent": 4,
+              "comment": null
+            },
+            "item_type": "higher_order_invocation",
+            "length": 4,
+            "docLength": null
+          },
+          {
+            "id": "ec5ea301-38e1-97a0-e049-a9751a93820b",
+            "ancestors": [
+              "9990c74f-e42e-bc93-6c44-ef50c182a70c"
+            ],
+            "description": "Broadcasts new messages to connected clients.",
+            "name": null,
+            "location": {
+              "start": 50,
+              "insert": 51,
+              "offset": " ",
+              "indent": 4,
+              "comment": null
+            },
+            "item_type": "higher_order_invocation",
+            "length": 8,
+            "docLength": null
+          },
+          {
+            "id": "b20dbdca-22e0-6eab-6d40-00dc330eae63",
+            "ancestors": [
+              "9990c74f-e42e-bc93-6c44-ef50c182a70c",
+              "ec5ea301-38e1-97a0-e049-a9751a93820b"
+            ],
+            "description": "Broadcasts new message to all users except sender.",
+            "name": null,
+            "location": {
+              "start": 53,
+              "insert": 54,
+              "offset": " ",
+              "indent": 6,
+              "comment": null
+            },
+            "item_type": "higher_order_invocation",
+            "length": 4,
+            "docLength": null
+          },
+          {
+            "id": "b6e0b74c-9e87-138c-bc4f-97d231faf2c9",
+            "ancestors": [
+              "9990c74f-e42e-bc93-6c44-ef50c182a70c"
+            ],
+            "description": "Unsubscribes and removes the user from the room when the \"setup\" event occurs.",
+            "name": null,
+            "location": {
+              "start": 59,
+              "insert": 60,
+              "offset": " ",
+              "indent": 4,
+              "comment": null
+            },
+            "item_type": "higher_order_invocation",
+            "length": 4,
+            "docLength": null
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "Signup.js",
+    "path": "frontend/src/components/Authentication/Signup.js",
+    "content": {
+      "structured": {
+        "description": "A React component named Signup that handles user sign up functionality using Chakra UI for frontend and Axios for API calls. It accepts name, email, password, confirm password, and picture as input from the user and makes a POST request to an API endpoint to create a new user account. If the request is successful, it stores the user's information in local storage and redirects the user to the chat page.",
+        "items": [
+          {
+            "id": "20af7d03-54c2-b097-be40-cc89c0cc907b",
+            "ancestors": [],
+            "description": "Handles user sign-up by collecting and validating name, email, password, confirm password, and picture. It then posts the data to an API for user creation and displays success or error messages accordingly.",
+            "params": [],
+            "returns": {
+              "type_name": "JSX.Element",
+              "description": "A React component that renders a stack of form controls and buttons for user signup, including input fields, password visibility toggles, file upload, and submit button."
+            },
+            "usage": {
+              "language": "javascript",
+              "code": "function App() {\n    return (\n      <div>\n        <Signup />\n      </div>\n    );\n}",
+              "description": ""
+            },
+            "name": "Signup",
+            "location": {
+              "start": 17,
+              "insert": 17,
+              "offset": " ",
+              "indent": 0,
+              "comment": null
+            },
+            "item_type": "function",
+            "length": 195,
+            "docLength": null
+          },
+          {
+            "id": "a049e531-f71c-c489-af44-50d6da833805",
+            "ancestors": [
+              "20af7d03-54c2-b097-be40-cc89c0cc907b"
+            ],
+            "description": "Uploads an image to Cloudinary and sets it as a post detail if it is a valid JPEG or PNG file. If not, it displays an error message. The function also handles loading states by setting the `loading` state true before uploading and false after completion or failure.",
+            "params": [
+              {
+                "name": "pics",
+                "default_value": null,
+                "optional": false,
+                "type_name": "object",
+                "description": "Expected to represent an image file."
+              }
+            ],
+            "usage": {
+              "language": "javascript",
+              "code": "postDetails({ file: new Blob([/* image data */], { type: \"image/jpeg\" }) });\n",
+              "description": ""
+            },
+            "name": "postDetails",
+            "location": {
+              "start": 32,
+              "insert": 32,
+              "offset": " ",
+              "indent": 2,
+              "comment": null
+            },
+            "item_type": "function",
+            "length": 41,
+            "docLength": null
+          },
+          {
+            "id": "47ef9d8f-e480-c28a-f541-65d323e97c6f",
+            "ancestors": [
+              "20af7d03-54c2-b097-be40-cc89c0cc907b",
+              "a049e531-f71c-c489-af44-50d6da833805",
+              "35e999fd-4478-d09f-3944-84afb378de68"
+            ],
+            "description": "Sets URL and disables loading upon data reception.",
+            "name": null,
+            "location": {
+              "start": 49,
+              "insert": 55,
+              "offset": " ",
+              "indent": 10,
+              "comment": null
+            },
+            "item_type": "higher_order_invocation",
+            "length": 9,
+            "docLength": null
+          },
+          {
+            "id": "35e999fd-4478-d09f-3944-84afb378de68",
+            "ancestors": [
+              "20af7d03-54c2-b097-be40-cc89c0cc907b",
+              "a049e531-f71c-c489-af44-50d6da833805"
+            ],
+            "description": "Catches and logs errors, then sets loading state to false.",
+            "name": null,
+            "location": {
+              "start": 49,
+              "insert": 59,
+              "offset": " ",
+              "indent": 10,
+              "comment": null
+            },
+            "item_type": "higher_order_invocation",
+            "length": 13,
+            "docLength": null
+          },
+          {
+            "id": "9146f937-f378-f384-3243-34e9c120caf6",
+            "ancestors": [
+              "20af7d03-54c2-b097-be40-cc89c0cc907b"
+            ],
+            "description": "Handles user sign-up by validating input data, making a POST request to the `/api/user` endpoint, and storing the response in local storage if successful; otherwise, it displays error messages and sets loading state accordingly.",
+            "params": [],
+            "returns": {
+              "type_name": "any",
+              "description": "Undefined when it encounters an error and a success message when the sign-up operation is successful."
+            },
+            "usage": {
+              "language": "javascript",
+              "code": "handleSignUp(\"John Doe\", \"john@example.com\", \"password123\", \"password123\");\n",
+              "description": "\nSetLoading and then handle the response."
+            },
+            "name": "handleSignUp",
+            "location": {
+              "start": 73,
+              "insert": 73,
+              "offset": " ",
+              "indent": 2,
+              "comment": null
+            },
+            "item_type": "function",
+            "length": 63,
+            "docLength": null
+          },
+          {
+            "id": "c15e0417-a0d1-c086-fb48-0aab09911056",
+            "ancestors": [
+              "20af7d03-54c2-b097-be40-cc89c0cc907b",
+              "9146f937-f378-f384-3243-34e9c120caf6"
+            ],
+            "description": "Checks whether a given `value` has a length greater than zero, returning a boolean result indicating whether the condition is met or not. It effectively validates whether a string is non-empty.",
+            "params": [
+              {
+                "name": "value",
+                "default_value": null,
+                "optional": false,
+                "type_name": "string | number",
+                "description": "Being validated for non-empty length."
+              }
+            ],
+            "returns": {
+              "type_name": "boolean",
+              "description": "True if the length of the input value is greater than zero and false otherwise."
+            },
+            "usage": {
+              "language": "javascript",
+              "code": "const userInput = \"Hello\";\nif (validator(userInput)) {\n    // validation successful, proceed with processing\n}",
+              "description": ""
+            },
+            "name": "validator",
+            "location": {
+              "start": 126,
+              "insert": 126,
+              "offset": " ",
+              "indent": 8,
+              "comment": null
+            },
+            "item_type": "function",
+            "length": 3,
+            "docLength": null
+          },
+          {
+            "id": "09545f31-df48-66bb-ac4e-030b39e88a90",
+            "ancestors": [
+              "20af7d03-54c2-b097-be40-cc89c0cc907b",
+              "9146f937-f378-f384-3243-34e9c120caf6"
+            ],
+            "description": "Converts a given `value` to lowercase. It takes an input, applies the operation to change it into lowercase, and returns the resulting string in lowercase format.",
+            "params": [
+              {
+                "name": "value",
+                "default_value": null,
+                "optional": false,
+                "type_name": "string | number",
+                "description": "Intended for conversion to lowercase."
+              }
+            ],
+            "returns": {
+              "type_name": "string",
+              "description": "Converted to lowercase."
+            },
+            "usage": {
+              "language": "javascript",
+              "code": "const originalString = 'THIS IS A TEST';\nconst transformedString = transformer(originalString);\n",
+              "description": ""
+            },
+            "name": "transformer",
+            "location": {
+              "start": 129,
+              "insert": 129,
+              "offset": " ",
+              "indent": 8,
+              "comment": null
+            },
+            "item_type": "function",
+            "length": 3,
+            "docLength": null
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "GroupChatModal.js",
+    "path": "frontend/src/components/miscellaneous/GroupChatModal.js",
+    "content": {
+      "structured": {
+        "description": "A React component `GroupChatModal` that creates a modal window for users to create a new group chat. The component uses Chakra UI and Axios libraries to interact with an API and perform search operations. It handles user input, fetches data from the API, and updates the state accordingly.",
+        "items": [
+          {
+            "id": "5fba3d7b-c8d2-0abb-c244-26cc5ec1b3b2",
+            "ancestors": [],
+            "description": "Creates a modal for creating a new group chat. It allows users to input a chat name, search for and add users, display selected users, and create the group when ready. The modal also displays a loading message while processing user data.",
+            "params": [
+              {
+                "name": "obj",
+                "default_value": null,
+                "optional": false,
+                "type_name": "object",
+                "description": "Required for rendering the modal component. It is expected to contain any JSX elements that will be displayed inside the modal, which can include text, images, or other components."
+              },
+              {
+                "name": "obj.children",
+                "default_value": null,
+                "optional": false,
+                "type_name": "ReactNode",
+                "description": "Used to pass JSX content to render within the modal."
+              }
+            ],
+            "returns": {
+              "type_name": "JSX.Element",
+              "description": "A React component that represents a modal window with various elements such as input fields, buttons and other widgets."
+            },
+            "usage": {
+              "language": "javascript",
+              "code": "const App = () => {\n  return (\n    <div>\n      <GroupChatModal>Start a group chat</GroupChatModal>\n    </div>\n  );\n};\n",
+              "description": ""
+            },
+            "name": "GroupChatModal",
+            "location": {
+              "start": 22,
+              "insert": 22,
+              "offset": " ",
+              "indent": 0,
+              "comment": null
+            },
+            "item_type": "function",
+            "length": 68,
+            "docLength": null
+          },
+          {
+            "id": "073187aa-61ae-e4a3-1a45-83fe68c2b4ab",
+            "ancestors": [],
+            "description": "Performs a GET request to an API endpoint with a search query parameter. It sets the loading state and then updates the search result based on the response data. If an error occurs, it displays an error toast notification.",
+            "params": [
+              {
+                "name": "query",
+                "default_value": null,
+                "optional": false,
+                "type_name": "string",
+                "description": "Used to search for user data."
+              }
+            ],
+            "usage": {
+              "language": "javascript",
+              "code": "handleSearch('John');\n",
+              "description": "\nThis call sets query equal to 'John' and triggers a search request."
+            },
+            "name": "handleSearch",
+            "location": {
+              "start": 93,
+              "insert": 93,
+              "offset": " ",
+              "indent": 2,
+              "comment": null
+            },
+            "item_type": "function",
+            "length": 26,
+            "docLength": null
+          },
+          {
+            "id": "48b51e0e-b24b-a19a-2e40-121988219f8e",
+            "ancestors": [],
+            "description": "Creates a new chat group by sending a POST request to the `/api/chat/group` endpoint with the provided group name and selected users. If any validation errors occur, it displays an error toast notification; otherwise, it updates the chats list and displays a success toast notification.",
+            "params": [],
+            "returns": {
+              "type_name": "any",
+              "description": "Either an array of objects (`setChats([data, ...chats])`) or a toast notification with error message (`toast({...})`)."
+            },
+            "usage": {
+              "language": "javascript",
+              "code": "handleSubmit();\n",
+              "description": "\nThe `groupName` and `selectedUsers` variables are assumed to have been previously set."
+            },
+            "name": "handleSubmit",
+            "location": {
+              "start": 119,
+              "insert": 119,
+              "offset": " ",
+              "indent": 2,
+              "comment": null
+            },
+            "item_type": "function",
+            "length": 58,
+            "docLength": null
+          },
+          {
+            "id": "5989131f-b0d2-c6b7-ae40-56e616d33c3c",
+            "ancestors": [
+              "48b51e0e-b24b-a19a-2e40-121988219f8e"
+            ],
+            "description": "Verifies whether a given value meets certain criteria before allowing it to proceed. It checks if the value's name is not empty and if its users array has at least one element, throwing an error if either condition is not met.",
+            "params": [
+              {
+                "name": "value",
+                "default_value": null,
+                "optional": false,
+                "type_name": "object",
+                "description": "Used for validation."
+              }
+            ],
+            "usage": {
+              "language": "javascript",
+              "code": "let value = {name: '', users: []};\ntry {\n  validator(value);\n} catch (error) {\n  console.error(error.message);\n}\n",
+              "description": ""
+            },
+            "name": "validator",
+            "location": {
+              "start": 134,
+              "insert": 134,
+              "offset": " ",
+              "indent": 8,
+              "comment": null
+            },
+            "item_type": "function",
+            "length": 8,
+            "docLength": null
+          },
+          {
+            "id": "be1cc405-3c6d-119f-c043-afdb5fa31057",
+            "ancestors": [
+              "48b51e0e-b24b-a19a-2e40-121988219f8e"
+            ],
+            "description": "Takes a value as input, returns a new object with all properties from the input value, and modifies the `users` property to contain only the `_id`s of the users in the original array.",
+            "params": [
+              {
+                "name": "value",
+                "default_value": null,
+                "optional": false,
+                "type_name": "object",
+                "description": "Processed to modify its contents."
+              }
+            ],
+            "returns": {
+              "type_name": "object",
+              "description": "An extended version of its input. This returned object has the same properties as its input except for the 'users' property which contains an array of IDs instead of user objects."
+            },
+            "usage": {
+              "language": "javascript",
+              "code": "const data = {\n  users: [\n    { _id: \"1\", name: \"Alice\" },\n    { _id: \"2\", name: \"Bob\" }\n  ]\n};\n\ndata = transformer(data);\n\n// Output: \n// { users: [\"1\", \"2\"] }",
+              "description": ""
+            },
+            "name": "transformer",
+            "location": {
+              "start": 142,
+              "insert": 142,
+              "offset": " ",
+              "indent": 8,
+              "comment": null
+            },
+            "item_type": "function",
+            "length": 6,
+            "docLength": null
+          },
+          {
+            "id": "19d189cf-2bb7-88aa-e745-a443f9eb5887",
+            "ancestors": [],
+            "description": "Checks if a user is already included in an array of selected users. If not, it adds the user to the array and triggers a toast notification.",
+            "params": [
+              {
+                "name": "userToAdd",
+                "default_value": null,
+                "optional": false,
+                "type_name": "string",
+                "description": "Intended to be a user ID to add."
+              }
+            ],
+            "usage": {
+              "language": "javascript",
+              "code": "handleGroup('JohnDoe');\n",
+              "description": ""
+            },
+            "name": "handleGroup",
+            "location": {
+              "start": 177,
+              "insert": 177,
+              "offset": " ",
+              "indent": 2,
+              "comment": null
+            },
+            "item_type": "function",
+            "length": 12,
+            "docLength": null
+          },
+          {
+            "id": "34520ff6-1c76-8e93-4947-e972b48a337c",
+            "ancestors": [],
+            "description": "Filters out a user from the `selectedUsers` array based on their unique identifier `_id`. It updates the `selectedUsers` state by removing the specified user from the list when called with a user object as an argument.",
+            "params": [
+              {
+                "name": "delUser",
+                "default_value": null,
+                "optional": false,
+                "type_name": "object",
+                "description": "Used to identify user for deletion."
+              }
+            ],
+            "usage": {
+              "language": "javascript",
+              "code": "handleDelete('5f6c2d3e4a5b');\n",
+              "description": "\nThis would remove a selected user with ID '5f6c2d3e4a5b' from the list of selected users."
+            },
+            "name": "handleDelete",
+            "location": {
+              "start": 189,
+              "insert": 189,
+              "offset": " ",
+              "indent": 2,
+              "comment": null
+            },
+            "item_type": "function",
+            "length": 3,
+            "docLength": null
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "ProfileModals.js",
+    "path": "frontend/src/components/miscellaneous/ProfileModals.js",
+    "content": {
+      "structured": {
+        "description": "A React component `ProfileModals` that displays a modal window with user information when clicked. The component utilizes Chakra UI library for styling and functionality. It accepts two props: `user` containing user data, and `children` which can be overridden to display custom content within the modal.",
+        "items": [
+          {
+            "id": "c2ffe0ea-b420-00a5-914a-e01e45c80417",
+            "ancestors": [],
+            "description": "Displays a modal window containing user profile information when triggered by a child component or an icon button. The modal shows the user's name, email, and avatar image with a close button for dismissal.",
+            "params": [
+              {
+                "name": "obj",
+                "default_value": null,
+                "optional": false,
+                "type_name": "object",
+                "description": "Required. The first property \"user\" represents user data, and the second property \"children\" allows for rendering children components or text within the modal."
+              },
+              {
+                "name": "obj.user",
+                "default_value": null,
+                "optional": false,
+                "type_name": "object",
+                "description": "Used to retrieve user data."
+              },
+              {
+                "name": "obj.children",
+                "default_value": null,
+                "optional": false,
+                "type_name": "string | JSX.Element",
+                "description": "Optional, used to render a custom header or content."
+              }
+            ],
+            "usage": {
+              "language": "javascript",
+              "code": "const user = { name: 'John', email: 'john@example.com', avatar: 'https://example.com/john-avatar.jpg' };\n<ProfileModals user={user}>View Profile</ProfileModals>",
+              "description": ""
+            },
+            "name": "ProfileModals",
+            "location": {
+              "start": 18,
+              "insert": 18,
+              "offset": " ",
+              "indent": 0,
+              "comment": null
+            },
+            "item_type": "function",
+            "length": 158,
+            "docLength": null
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "UpdateGroupChatModal.js",
+    "path": "frontend/src/components/miscellaneous/UpdateGroupChatModal.js",
+    "content": {
+      "structured": {
+        "description": "An update group chat modal component using React and Chakra UI. The component allows administrators of a group chat to add or remove users from the chat, rename the chat, and search for users by name. It uses Axios to make API calls to interact with the backend server and Toast notifications to display any errors that may occur during these interactions.",
+        "items": [
+          {
+            "id": "4e92308a-ab6a-7894-624b-9c3fe466cec6",
+            "ancestors": [],
+            "description": "Manages a modal window for updating a group chat in a messaging application. It allows users to remove members, add new members, rename the chat, and search for users to add. It also displays the current chat name, member list, and provides options to leave the group.",
+            "params": [
+              {
+                "name": "obj",
+                "default_value": null,
+                "optional": false,
+                "type_name": "object",
+                "description": "3 in number, where 'fetchAgain' is probably used to update the UI after fetching data from server, 'setFetchAgain' is likely an updating state for 'fetchAgain', 'fetchMessages' seems to fetch new messages."
+              },
+              {
+                "name": "obj.fetchAgain",
+                "default_value": null,
+                "optional": false,
+                "type_name": "boolean",
+                "description": "Used to trigger a re-fetching of data."
+              },
+              {
+                "name": "obj.setFetchAgain",
+                "default_value": null,
+                "optional": false,
+                "type_name": "boolean",
+                "description": "Used to trigger the fetching of data again after certain actions are performed."
+              },
+              {
+                "name": "obj.fetchMessages",
+                "default_value": null,
+                "optional": false,
+                "type_name": "() => void",
+                "description": "Used to fetch chat messages when the group is updated."
+              }
+            ],
+            "returns": {
+              "type_name": "JSX.Element",
+              "description": "A React component representing a modal window with various functionalities to manage a group chat."
+            },
+            "usage": {
+              "language": "javascript",
+              "code": "const fetchAgain = true;\nconst setFetchAgain = () => {};\nconst fetchMessages = () => {};\n\nconst { user } = useChatState();\n\n<UpdateGroupChatModal\n  fetchAgain={fetchAgain}\n  setFetchAgain={setFetchAgain}\n  fetchMessages={fetchMessages}\n  user={user}\n/>",
+              "description": ""
+            },
+            "name": "UpdateGroupChatModal",
+            "location": {
+              "start": 25,
+              "insert": 25,
+              "offset": " ",
+              "indent": 0,
+              "comment": null
+            },
+            "item_type": "function",
+            "length": 236,
+            "docLength": null
+          },
+          {
+            "id": "d82ac18c-eda9-b8b8-154c-5545dcd6c204",
+            "ancestors": [
+              "4e92308a-ab6a-7894-624b-9c3fe466cec6"
+            ],
+            "description": "Removes a user from a chat group when called with a user object as an argument. It checks if the caller is the admin or the user themselves, and then makes a PUT request to the server to remove the user from the chat group.",
+            "params": [
+              {
+                "name": "user1",
+                "default_value": null,
+                "optional": false,
+                "type_name": "object",
+                "description": "Used to represent a user object."
+              }
+            ],
+            "usage": {
+              "language": "javascript",
+              "code": "handleRemove({ _id: '1234567890', token: 'abcdefg' }, { _id: '9876543210' });\n",
+              "description": "\n\nThis code snippet would remove a user from a chat group when called."
+            },
+            "name": "handleRemove",
+            "location": {
+              "start": 35,
+              "insert": 35,
+              "offset": " ",
+              "indent": 2,
+              "comment": null
+            },
+            "item_type": "function",
+            "length": 42,
+            "docLength": null
+          },
+          {
+            "id": "82b091ba-8850-9e96-3147-4a5606a16ec7",
+            "ancestors": [
+              "4e92308a-ab6a-7894-624b-9c3fe466cec6"
+            ],
+            "description": "Adds a new user to a chat group. It checks if the user already exists and if the calling user is an admin. If not, it displays an error message. Otherwise, it makes a PUT request to add the user to the group and updates the chat state.",
+            "params": [
+              {
+                "name": "user1",
+                "default_value": null,
+                "optional": false,
+                "type_name": "object",
+                "description": "Used to represent a new user to be added to the chat group."
+              }
+            ],
+            "usage": {
+              "language": "javascript",
+              "code": "handleAddUser({ _id: '123456789', token: 'abcdefg' });\n",
+              "description": "\n\nNote: The exact usage depends on the context and the values of `selectedChat` and `user`."
+            },
+            "name": "handleAddUser",
+            "location": {
+              "start": 77,
+              "insert": 77,
+              "offset": " ",
+              "indent": 2,
+              "comment": null
+            },
+            "item_type": "function",
+            "length": 52,
+            "docLength": null
+          },
+          {
+            "id": "d3cc633c-f923-6ca3-5347-f52da93109be",
+            "ancestors": [
+              "4e92308a-ab6a-7894-624b-9c3fe466cec6"
+            ],
+            "description": "Asynchronously renews a group chat's name by sending a PUT request to the \"/api/chat/rename\" endpoint with the new name and ID, then updates the state accordingly.",
+            "params": [],
+            "usage": {
+              "language": "javascript",
+              "code": "handleRename();\n",
+              "description": ""
+            },
+            "name": "handleRename",
+            "location": {
+              "start": 129,
+              "insert": 129,
+              "offset": " ",
+              "indent": 2,
+              "comment": null
+            },
+            "item_type": "function",
+            "length": 33,
+            "docLength": null
+          },
+          {
+            "id": "a5390033-8b53-71b1-7045-89e37522753c",
+            "ancestors": [
+              "4e92308a-ab6a-7894-624b-9c3fe466cec6"
+            ],
+            "description": "Searches for a query and returns a list of results from an API, handling loading state and error cases. If no query is provided, it resets the search result to an empty array.",
+            "params": [
+              {
+                "name": "query",
+                "default_value": null,
+                "optional": false,
+                "type_name": "string",
+                "description": "Used to search for data."
+              }
+            ],
+            "usage": {
+              "language": "javascript",
+              "code": "handleSearch(\"John\");\n",
+              "description": ""
+            },
+            "name": "handleSearch",
+            "location": {
+              "start": 162,
+              "insert": 162,
+              "offset": " ",
+              "indent": 2,
+              "comment": null
+            },
+            "item_type": "function",
+            "length": 26,
+            "docLength": null
+          }
+        ]
+      }
+    }
+  }
+]

@@ -19,6 +19,21 @@ import axios from "axios";
 import UserListItem from "../UserAvatar/UserListItem";
 import UserBadgeItem from "../UserAvatar/UserBadgeItem";
 
+/**
+ * @description Creates a modal for creating a new group chat. It allows users to
+ * input a chat name, search for and add users, display selected users, and create
+ * the group when ready. The modal also displays a loading message while processing
+ * user data.
+ * 
+ * @param {object} obj - Required for rendering the modal component. It is expected
+ * to contain any JSX elements that will be displayed inside the modal, which can
+ * include text, images, or other components.
+ * 
+ * @param {ReactNode} obj.children - Used to pass JSX content to render within the modal.
+ * 
+ * @returns {JSX.Element} A React component that represents a modal window with various
+ * elements such as input fields, buttons and other widgets.
+ */
 const GroupChatModal = ({ children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [groupName, setGroupName] = useState();
@@ -90,6 +105,13 @@ const GroupChatModal = ({ children }) => {
 
 export default GroupChatModal;
 
+  /**
+   * @description Performs a GET request to an API endpoint with a search query parameter.
+   * It sets the loading state and then updates the search result based on the response
+   * data. If an error occurs, it displays an error toast notification.
+   * 
+   * @param {string} query - Used to search for user data.
+   */
   const handleSearch = async (query) => {
     if (!query) {
       setSearchResult([]);
@@ -116,6 +138,15 @@ export default GroupChatModal;
       });
     }
   };
+  /**
+   * @description Creates a new chat group by sending a POST request to the `/api/chat/group`
+   * endpoint with the provided group name and selected users. If any validation errors
+   * occur, it displays an error toast notification; otherwise, it updates the chats
+   * list and displays a success toast notification.
+   * 
+   * @returns {any} Either an array of objects (`setChats([data, ...chats])`) or a toast
+   * notification with error message (`toast({...})`).
+   */
   const handleSubmit = async () => {
     if (!groupName || !selectedUsers) {
      toast({
@@ -131,6 +162,13 @@ export default GroupChatModal;
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
+        /**
+         * @description Verifies whether a given value meets certain criteria before allowing
+         * it to proceed. It checks if the value's name is not empty and if its users array
+         * has at least one element, throwing an error if either condition is not met.
+         * 
+         * @param {object} value - Used for validation.
+         */
         validator: (value) => {
           if (value.name === "") {
             throw new Error("Group name is required");
@@ -139,6 +177,17 @@ export default GroupChatModal;
             throw new Error("Please select at least one user");
           }
         },
+        /**
+         * @description Takes a value as input, returns a new object with all properties from
+         * the input value, and modifies the `users` property to contain only the `_id`s of
+         * the users in the original array.
+         * 
+         * @param {object} value - Processed to modify its contents.
+         * 
+         * @returns {object} An extended version of its input. This returned object has the
+         * same properties as its input except for the 'users' property which contains an
+         * array of IDs instead of user objects.
+         */
         transformer: (value) => {
           return {
             ...value,
@@ -174,6 +223,12 @@ export default GroupChatModal;
       });
     }
   };
+  /**
+   * @description Checks if a user is already included in an array of selected users.
+   * If not, it adds the user to the array and triggers a toast notification.
+   * 
+   * @param {string} userToAdd - Intended to be a user ID to add.
+   */
   const handleGroup = (userToAdd) => {
     if (selectedUsers.includes(userToAdd)) {
       toast({
@@ -186,6 +241,13 @@ export default GroupChatModal;
     }
     setSelectedUsers([...selectedUsers, userToAdd]);
   };
+  /**
+   * @description Filters out a user from the `selectedUsers` array based on their
+   * unique identifier `_id`. It updates the `selectedUsers` state by removing the
+   * specified user from the list when called with a user object as an argument.
+   * 
+   * @param {object} delUser - Used to identify user for deletion.
+   */
   const handleDelete = (delUser) => {
     setSelectedUsers(selectedUsers.filter((sel) => sel._id !== delUser._id));
   };

@@ -3,6 +3,8 @@ import User from "../models/userModel";
 import generateToken from "../config/generateToken";
 
 const registerUser = asyncHandlers(async (req, res) => {
+  // Registers users.
+
   const { name, email, password, pic } = req.body;
   if (!name || !email || !password) {
     res.status(400);
@@ -36,6 +38,8 @@ const registerUser = asyncHandlers(async (req, res) => {
 });
 
 const authUser = asyncHandlers(async (req, res) => {
+  // Authenticates a user.
+
   const { email, password } = req.body;
   const user = await User.findOne({ email });
   // console.log(user);
@@ -54,6 +58,8 @@ const authUser = asyncHandlers(async (req, res) => {
 });
 
 const allUser = asyncHandlers(async (req, res) => {
+  // Retrieves all users excluding the logged-in user, based on search query.
+
   const searchRegex = new RegExp(req.query.search, "i");
   const keyword = req.query.search
     ? {

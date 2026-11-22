@@ -14,6 +14,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
 import { useHistory } from "react-router-dom";
 
+/**
+ * @description Handles user sign-up by collecting and validating name, email, password,
+ * confirm password, and picture. It then posts the data to an API for user creation
+ * and displays success or error messages accordingly.
+ * 
+ * @returns {JSX.Element} A React component that renders a stack of form controls and
+ * buttons for user signup, including input fields, password visibility toggles, file
+ * upload, and submit button.
+ */
 const Signup = () => {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
@@ -29,6 +38,14 @@ const Signup = () => {
   const handlePShow = () => setPShow(!pshow);
   const handleCShow = () => setCShow(!cshow);
 
+  /**
+   * @description Uploads an image to Cloudinary and sets it as a post detail if it is
+   * a valid JPEG or PNG file. If not, it displays an error message. The function also
+   * handles loading states by setting the `loading` state true before uploading and
+   * false after completion or failure.
+   * 
+   * @param {object} pics - Expected to represent an image file.
+   */
   const postDetails = (pics) => {
     setLoading(true);
     if (pics === undefined) {
@@ -52,10 +69,14 @@ const Signup = () => {
       })
         .then((res) => res.json())
         .then((data) => {
+          // Sets URL and disables loading upon data reception.
+
           setPic(data.url.toString());
           setLoading(false);
         })
         .catch((err) => {
+          // Catches and logs errors, then sets loading state to false.
+
           console.log(err);
           setLoading(false);
         });
@@ -70,6 +91,14 @@ const Signup = () => {
       return;
     }
   };
+  /**
+   * @description Handles user sign-up by validating input data, making a POST request
+   * to the `/api/user` endpoint, and storing the response in local storage if successful;
+   * otherwise, it displays error messages and sets loading state accordingly.
+   * 
+   * @returns {any} Undefined when it encounters an error and a success message when
+   * the sign-up operation is successful.
+   */
   const handleSignUp = async () => {
     setLoading(true);
     if (!name || !email || !password || !confirmPassword) {
@@ -123,9 +152,28 @@ const Signup = () => {
         duration: 3000,
         isClosable: true,
         position: "bottom",
+        /**
+         * @description Checks whether a given `value` has a length greater than zero, returning
+         * a boolean result indicating whether the condition is met or not. It effectively
+         * validates whether a string is non-empty.
+         * 
+         * @param {string | number} value - Being validated for non-empty length.
+         * 
+         * @returns {boolean} True if the length of the input value is greater than zero and
+         * false otherwise.
+         */
         validator: (value) => {
           return value.length > 0;
         },
+        /**
+         * @description Converts a given `value` to lowercase. It takes an input, applies the
+         * operation to change it into lowercase, and returns the resulting string in lowercase
+         * format.
+         * 
+         * @param {string | number} value - Intended for conversion to lowercase.
+         * 
+         * @returns {string} Converted to lowercase.
+         */
         transformer: (value) => {
           return value.toLowerCase();
         },

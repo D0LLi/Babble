@@ -4,6 +4,8 @@ import User from "../models/userModel";
 import Chat from "../models/chatModels";
 
 const sendMessage = asyncHandler(async (req, res) => {
+  // Sends a message.
+
   const { content, chatId } = req.body;
   if (!content || !chatId) {
     console.log("Invalid Data Passed into Request");
@@ -33,6 +35,8 @@ const sendMessage = asyncHandler(async (req, res) => {
 });
 
 const allMessages = asyncHandler(async (req, res) => {
+  // Retrieves messages from a database and sends them back to a client as JSON.
+
   try {
     const messages = await Message.find({ chat: req.params.chatId })
       .populate("sender", "name pic email")
